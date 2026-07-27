@@ -324,12 +324,100 @@ button { font: inherit; }
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(rgba(17,18,16,.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(17,18,16,.055) 1px, transparent 1px);
-  background-size: 42px 42px;
+    radial-gradient(ellipse at 54% 66%, rgba(217,255,67,.18), transparent 27%),
+    radial-gradient(circle at 74% 18%, rgba(255,255,255,.95), transparent 24%),
+    linear-gradient(145deg, #f5f3ec 0%, #e7e5de 57%, #d9d8d1 100%);
   cursor: grab;
   touch-action: none;
 }
+
+.viewer::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  opacity: .2;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.11'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.viewer::after {
+  content: "";
+  width: 52%;
+  height: 7%;
+  position: absolute;
+  z-index: 1;
+  left: 25%;
+  bottom: 14%;
+  border-radius: 50%;
+  background: rgba(17,18,16,.18);
+  filter: blur(25px);
+  pointer-events: none;
+}
+
+.sirv-stage {
+  position: absolute;
+  z-index: 2;
+  inset: 70px 35px 58px;
+}
+
+.sirv-stage .Sirv,
+.sirv-stage .sirv-spin-container,
+.sirv-stage .sirv-spin {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.sirv-stage .Sirv {
+  background: transparent;
+}
+
+.spin-badge {
+  position: absolute;
+  z-index: 7;
+  right: 25px;
+  top: 24px;
+  display: grid;
+  justify-items: end;
+  pointer-events: none;
+}
+
+.spin-badge span,
+.spin-badge small {
+  color: var(--muted);
+  font-size: 6px;
+  font-weight: 600;
+  letter-spacing: .14em;
+}
+
+.spin-badge strong {
+  margin: 4px 0 2px;
+  font: 400 20px/1 var(--display);
+}
+
+.spin-note {
+  position: absolute;
+  z-index: 7;
+  left: 50%;
+  bottom: 23px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.spin-note p {
+  margin: 0;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: .12em;
+}
+
+.spin-note span:first-child { animation: cue 1s ease-in-out infinite alternate; }
+.spin-note span:last-child { animation: cue-right 1s ease-in-out infinite alternate; }
+@keyframes cue-right { to { transform: translateX(5px); } }
 
 .breadcrumb {
   position: absolute;
@@ -659,6 +747,54 @@ button { font: inherit; }
 .product-detail .color.active {
   border: 2px solid var(--ink);
   padding: 7px;
+}
+
+.product-detail .color {
+  grid-template-columns: 20px 1fr;
+  padding: 8px 6px;
+}
+
+.product-detail .color i {
+  width: 20px;
+  height: 20px;
+}
+
+.product-detail .color:nth-child(1) i { background: linear-gradient(145deg, #444, #090909); }
+.product-detail .color:nth-child(2) i { background: linear-gradient(145deg, #742e2b, #351313); }
+.product-detail .color:nth-child(3) i { background: linear-gradient(145deg, #686849, #303326); }
+
+.size-head {
+  margin-top: 24px;
+}
+
+.size-head a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 7px;
+}
+
+.size-options {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border: 1px solid var(--line);
+  border-right: 0;
+}
+
+.size-options button {
+  height: 40px;
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--line);
+  cursor: pointer;
+  font-size: 8px;
+  font-weight: 600;
+}
+
+.size-options button:hover,
+.size-options button.active {
+  color: white;
+  background: var(--ink);
 }
 
 .primary-buy {
@@ -1164,46 +1300,51 @@ button { font: inherit; }
 }
 
 .battery-shell {
-  width: min(250px, 55vw);
-  height: 480px;
-  padding: 14px;
+  width: min(420px, 70vw);
+  height: min(420px, 70vw);
+  padding: 28px;
   position: relative;
   display: flex;
   align-items: end;
-  border: 2px solid rgba(255,255,255,.7);
-  border-radius: 35px;
+  border: 2px dashed rgba(217,255,67,.75);
+  border-radius: 50%;
+  transform: rotate(-12deg);
 }
 
 .battery-shell::before {
-  content: "";
-  width: 70px;
-  height: 18px;
+  content: "HEAT SEALED / WELTED / TESTED";
+  width: max-content;
+  height: auto;
   position: absolute;
   left: 50%;
-  top: -20px;
-  border: 2px solid rgba(255,255,255,.7);
-  border-bottom: 0;
-  border-radius: 8px 8px 0 0;
+  top: -38px;
+  color: rgba(255,255,255,.45);
+  border: 0;
+  font-size: 7px;
+  letter-spacing: .16em;
   transform: translateX(-50%);
 }
 
 .battery-level {
   width: 100%;
   height: 100%;
-  border-radius: 23px;
+  border: 22px solid #252825;
+  border-radius: 50%;
   background:
-    linear-gradient(0deg, rgba(217,255,67,.8), var(--acid)),
-    var(--acid);
-  box-shadow: 0 0 80px rgba(217,255,67,.35);
-  animation: charge 3s ease-in-out infinite alternate;
+    repeating-conic-gradient(from 4deg, var(--acid) 0 1deg, transparent 1deg 5deg),
+    #0c0d0c;
+  box-shadow:
+    inset 0 0 0 3px rgba(255,255,255,.14),
+    0 0 80px rgba(217,255,67,.22);
+  animation: sole-rotate 18s linear infinite;
 }
 
-@keyframes charge { from { height: 20%; } }
+@keyframes sole-rotate { to { transform: rotate(360deg); } }
 
 .battery-shell span {
   position: absolute;
   inset: 50% auto auto 50%;
-  color: var(--ink);
+  color: white;
   font: 400 32px/1 var(--display);
   transform: translate(-50%, -50%);
 }
@@ -1582,17 +1723,43 @@ body.cart-open {
   background: #dddcd4;
 }
 
-.mini-headphone {
-  width: 65px;
-  height: 65px;
-  display: grid;
-  place-items: center;
-  border: 10px solid #282b2d;
-  border-radius: 50%;
-  color: var(--acid);
-  background: #111;
-  font: 400 22px/1 var(--display);
+.mini-boot {
+  width: 72px;
+  height: 78px;
+  position: relative;
+  background: #191a18;
+  border-radius: 8px 8px 4px 12px;
   box-shadow: 0 12px 24px rgba(0,0,0,.25);
+}
+
+.mini-boot::after {
+  content: "";
+  width: 94px;
+  height: 18px;
+  position: absolute;
+  left: -3px;
+  bottom: -5px;
+  background: #24231e;
+  border-bottom: 4px solid #ab6e16;
+  border-radius: 8px 20px 8px 8px;
+}
+
+.mini-boot i {
+  width: 32px;
+  height: 4px;
+  position: absolute;
+  right: 8px;
+  top: 18px;
+  border-top: 2px solid #888;
+  border-bottom: 2px solid #888;
+}
+
+.mini-boot b {
+  position: absolute;
+  left: 10px;
+  top: 25px;
+  color: var(--acid);
+  font: 400 14px/1 var(--display);
 }
 
 .cart-product p {
