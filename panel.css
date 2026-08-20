@@ -1,0 +1,30 @@
+/* ================= YÖNETİM PANELİ stilleri ================= */
+.panel { max-width: 1100px; margin: 0 auto; padding: 30px 22px 80px; }
+.panel-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+.ptab { font-family: var(--display); font-size: 12px; letter-spacing: .06em; padding: 11px 18px; border-radius: 100px; border: 1px solid var(--line); background: #fff; cursor: pointer; }
+.ptab.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+.panel-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.panel-head h2 { font-family: var(--display); font-size: 22px; text-transform: uppercase; }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+.ptable { width: 100%; border-collapse: collapse; min-width: 720px; }
+.ptable th { text-align: left; font-family: var(--display); font-size: 10px; letter-spacing: .1em; color: var(--muted); padding: 14px 12px; border-bottom: 1px solid var(--line); }
+.ptable td { padding: 10px 12px; border-bottom: 1px solid var(--line); font-size: 13px; }
+.ptable tr:last-child td { border-bottom: none; }
+.pcell { display: flex; align-items: center; gap: 10px; }
+.pcell img { width: 38px; height: 38px; object-fit: contain; background: var(--paper); border-radius: 8px; padding: 4px; }
+.ptable input[type=text], .ptable input[type=number], .ptable select { border: 1px solid var(--line); border-radius: 8px; padding: 7px 9px; font: inherit; }
+.ptable input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--ink); }
+.del { border: 1px solid var(--line); background: #fff; color: #d64040; border-radius: 8px; padding: 6px 12px; cursor: pointer; font-size: 12px; }
+.hint { color: var(--muted); font-size: 12px; margin-top: 12px; }
+
+.form-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 16px; max-width: 620px; }
+.form-card label { display: grid; gap: 6px; font-size: 12px; font-weight: 600; color: #45463f; }
+.form-card input[type=text], .form-card input[type=password], .form-card input[type=number], .form-card select { border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; font: inherit; }
+.switch { display: flex; flex-direction: row; align-items: center; gap: 10px; }
+.switch input { width: 22px; height: 22px; accent-color: var(--ink); }
+.row-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.form-card.danger { border-color: #e0b4b4; margin-top: 20px; }
+.form-card.danger b { font-family: var(--display); }
+.form-card.danger p { font-size: 13px; color: #45463f; }
