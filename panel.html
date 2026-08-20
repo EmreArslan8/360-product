@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NORTHFORGE — Yönetim Paneli</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="kabin.css">
+    <link rel="stylesheet" href="magaza.css">
+    <link rel="stylesheet" href="panel.css">
+  </head>
+  <body class="panel-body">
+    <header class="topbar">
+      <a class="brand" href="index.html"><span class="brand-symbol">N</span><span>NORTHFORGE<small>PANEL</small></span></a>
+      <nav class="main-nav">
+        <a href="magaza.html">Mağaza</a>
+        <a href="kabin.html">Sanal Kabin</a>
+        <a href="panel.html" class="on">Panel</a>
+      </nav>
+      <div class="header-actions"><span class="demo-tag">YÖNETİM</span></div>
+    </header>
+
+    <main class="panel">
+      <nav class="panel-tabs">
+        <button class="ptab active" data-tab="urunler" type="button">Ürünler & Stok</button>
+        <button class="ptab" data-tab="kampanya" type="button">Kampanya</button>
+        <button class="ptab" data-tab="ayarlar" type="button">AI Ayarları</button>
+      </nav>
+
+      <!-- ÜRÜNLER -->
+      <section class="ptab-panel" id="tab-urunler">
+        <div class="panel-head">
+          <h2>Ürün & Stok Yönetimi</h2>
+          <button class="btn primary" id="add-product" type="button">+ Yeni ürün</button>
+        </div>
+        <div class="table-wrap">
+          <table class="ptable" id="ptable">
+            <thead><tr><th>Ürün</th><th>Kategori</th><th>Renk</th><th>Fiyat ₺</th><th>Stok</th><th>Görünür</th><th></th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <p class="hint">Değişiklikler anında kaydedilir ve mağazaya yansır. (localStorage demo)</p>
+      </section>
+
+      <!-- KAMPANYA -->
+      <section class="ptab-panel" id="tab-kampanya" hidden>
+        <div class="panel-head"><h2>Kampanya</h2></div>
+        <div class="form-card" id="campaign-form">
+          <label>Kampanya adı<input id="c-label" type="text"></label>
+          <label>Kupon kodu<input id="c-code" type="text"></label>
+          <label>İndirim %<input id="c-percent" type="number" min="0" max="90"></label>
+          <label class="switch">Aktif<input id="c-active" type="checkbox"></label>
+          <button class="btn primary" id="c-save" type="button">Kaydet</button>
+        </div>
+      </section>
+
+      <!-- AYARLAR -->
+      <section class="ptab-panel" id="tab-ayarlar" hidden>
+        <div class="panel-head"><h2>AI Ayarları</h2></div>
+        <div class="form-card">
+          <label>Gemini API anahtarı (Stil Danışmanı — ücretsiz: aistudio.google.com)
+            <input id="s-key" type="password" placeholder="AIza...">
+          </label>
+          <label>Üzerimde Dene sağlayıcı
+            <select id="s-provider">
+              <option value="idm-vton">IDM-VTON — ücretsiz (varsayılan)</option>
+              <option value="gemini">Gemini görsel — kaliteli, kotalı/ücretli</option>
+              <option value="local">Yerel giydirme — internet gerekmez</option>
+            </select>
+          </label>
+          <label>IDM-VTON Hugging Face Space<input id="s-space" type="text"></label>
+          <div class="row-btns">
+            <button class="btn primary" id="s-save" type="button">Kaydet</button>
+            <button class="btn ghost" id="s-test" type="button">Gemini bağlantısını test et</button>
+          </div>
+          <p class="hint" id="s-status"></p>
+        </div>
+        <div class="form-card danger">
+          <b>Demoyu sıfırla</b>
+          <p>Tüm ürün/stok/kampanya/sepet verisini varsayılana döndürür.</p>
+          <button class="btn ghost" id="reset" type="button">Sıfırla</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="panel.js" type="module"></script>
+  </body>
+</html>

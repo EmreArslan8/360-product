@@ -1,0 +1,108 @@
+/* ================= MAĞAZA + STİL DANIŞMANI stilleri ================= */
+.icon-btn, .cart-button {
+  font-family: var(--display); font-size: 12px; letter-spacing: .06em;
+  border: 1px solid var(--ink); background: transparent; color: var(--ink);
+  padding: 9px 14px; border-radius: 100px; cursor: pointer;
+}
+.cart-button { background: var(--ink); color: #fff; }
+.header-actions { display: flex; gap: 8px; align-items: center; }
+
+.shop { max-width: 1240px; margin: 0 auto; padding: 34px 22px 90px; }
+.shop-hero { max-width: 640px; margin-bottom: 26px; }
+.shop-hero h1 { font-family: var(--display); font-size: clamp(34px,6vw,64px); line-height: .95; margin: 12px 0 14px; text-transform: uppercase; }
+.shop-hero h1 span { color: var(--muted); }
+.shop-hero p { color: #45463f; line-height: 1.55; }
+
+.filters { display: flex; gap: 10px; margin-bottom: 22px; flex-wrap: wrap; }
+.chip { font-family: var(--display); font-size: 11px; letter-spacing: .08em; padding: 10px 16px; border-radius: 100px; border: 1px solid var(--line); background: #fff; cursor: pointer; }
+.chip.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+.grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+@media (max-width: 900px){ .grid { grid-template-columns: repeat(2,1fr); } }
+.card { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; cursor: pointer; transition: .18s; }
+.card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,.08); }
+.card-thumb { aspect-ratio: 1/1; display: grid; place-items: center; background: var(--paper); }
+.card-thumb img { width: 62%; height: 62%; object-fit: contain; }
+.card-body { padding: 12px 14px 16px; display: grid; gap: 3px; }
+.card-body b { font-size: 14px; }
+.card-body i { font-size: 12px; color: var(--muted); font-style: normal; }
+.card-body em { font-family: var(--display); font-size: 15px; font-style: normal; margin-top: 3px; }
+.fav { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: rgba(255,255,255,.9); cursor: pointer; font-size: 15px; }
+.fav.on { color: #d64040; border-color: #d64040; }
+.empty { color: var(--muted); padding: 40px 0; }
+
+/* --------------------------- ürün modalı --------------------------- */
+.modal-backdrop { position: fixed; inset: 0; background: rgba(17,18,16,.5); z-index: 60; }
+.product-modal {
+  position: fixed; z-index: 61; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: min(860px, 94vw); max-height: 92vh; overflow: auto; background: var(--paper);
+  border-radius: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+}
+@media (max-width: 720px){ .product-modal { grid-template-columns: 1fr; } }
+.modal-visual { background: #fff; display: grid; place-items: center; padding: 30px; }
+.modal-visual img { width: 70%; }
+.modal-info { padding: 30px; position: relative; }
+.modal-close { position: absolute; top: 14px; right: 16px; font-size: 26px; background: none; border: none; cursor: pointer; }
+.m-cat { font-family: var(--display); font-size: 10px; letter-spacing: .16em; color: var(--muted); }
+.modal-info h2 { font-family: var(--display); font-size: 30px; margin: 8px 0; text-transform: uppercase; }
+.m-price { font-family: var(--display); font-size: 22px; }
+.m-stock { color: #2c6e49; font-size: 13px; margin: 6px 0 18px; font-weight: 600; }
+.m-choose span { font-family: var(--display); font-size: 10px; letter-spacing: .14em; color: var(--muted); }
+.sizes { display: flex; gap: 8px; margin: 8px 0 22px; }
+.sizes button { width: 46px; height: 46px; border-radius: 12px; border: 1px solid var(--line); background: #fff; cursor: pointer; font-weight: 600; }
+.sizes button.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+.m-actions { display: grid; gap: 10px; }
+
+/* ------------------------------- sepet ----------------------------- */
+.cart-lines { padding: 8px 22px; overflow: auto; flex: 1; }
+.cline { display: grid; grid-template-columns: 60px 1fr auto; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.cline-thumb { width: 60px; height: 60px; background: var(--paper); border-radius: 10px; display: grid; place-items: center; }
+.cline-thumb img { width: 74%; }
+.cline b { font-size: 13px; } .cline i { font-size: 12px; color: var(--muted); font-style: normal; display: block; margin: 2px 0 8px; }
+.qty { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 100px; padding: 2px 8px; }
+.qty button { border: none; background: none; font-size: 16px; cursor: pointer; width: 22px; }
+.cline-end { text-align: right; display: grid; gap: 8px; }
+.crm { border: none; background: none; color: var(--muted); font-size: 11px; cursor: pointer; text-decoration: underline; }
+.cart-total p { display: flex; justify-content: space-between; font-size: 13px; margin: 4px 0; }
+.cart-total .disc strong { color: #2c6e49; }
+.cart-total .grand { font-family: var(--display); font-size: 16px; margin-top: 10px; }
+.btn.wide { width: 100%; justify-content: center; }
+.btn.sm { font-size: 11px; padding: 10px 12px; }
+
+/* ------------------------- AI stil danışmanı ----------------------- */
+.stylist-fab {
+  position: fixed; right: 20px; bottom: 20px; z-index: 55;
+  font-family: var(--display); font-size: 12px; letter-spacing: .05em;
+  background: var(--acid); color: var(--ink); border: 1px solid var(--ink);
+  padding: 14px 20px; border-radius: 100px; cursor: pointer;
+  box-shadow: 0 12px 30px rgba(0,0,0,.18);
+}
+.stylist {
+  position: fixed; right: 20px; bottom: 20px; z-index: 56;
+  width: min(380px, 94vw); height: min(560px, 82vh);
+  background: var(--paper); border: 1px solid var(--ink); border-radius: 20px;
+  display: flex; flex-direction: column; overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,.25);
+}
+.stylist-head { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; background: var(--ink); color: #fff; }
+.stylist-head p { font-family: var(--display); font-size: 12px; letter-spacing: .08em; }
+.stylist-head small { color: var(--acid); margin-left: 6px; }
+.stylist-head button { background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; }
+.stylist-log { flex: 1; overflow: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.msg { max-width: 88%; padding: 10px 13px; border-radius: 14px; font-size: 13px; line-height: 1.45; }
+.msg.bot { background: #fff; border: 1px solid var(--line); align-self: flex-start; }
+.msg.user { background: var(--ink); color: #fff; align-self: flex-end; }
+.msg.err { border-color: #d64040; }
+.msg.thinking { opacity: .6; }
+.combo { display: flex; gap: 8px; margin: 10px 0; }
+.combo-item { flex: 1; text-decoration: none; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 8px; display: grid; gap: 3px; text-align: center; }
+.combo-item img { width: 60%; margin: 0 auto; }
+.combo-item span { font-size: 11px; } .combo-item em { font-family: var(--display); font-size: 11px; font-style: normal; }
+.note-sm { font-size: 12px; color: #45463f; margin-top: 6px; }
+.combo-actions { display: grid; gap: 6px; margin-top: 10px; }
+.combo-actions .btn { justify-content: center; text-decoration: none; }
+.stylist-form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--line); }
+.stylist-form input { flex: 1; border: 1px solid var(--line); border-radius: 100px; padding: 10px 14px; font: inherit; }
+.stylist-form button { width: 42px; border-radius: 50%; border: none; background: var(--ink); color: #fff; font-size: 16px; cursor: pointer; }
+.stylist-suggest { display: flex; gap: 6px; padding: 0 12px 12px; flex-wrap: wrap; }
+.stylist-suggest button { font-size: 11px; border: 1px solid var(--line); background: #fff; border-radius: 100px; padding: 6px 12px; cursor: pointer; }

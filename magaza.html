@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Northforge mağaza demosu — ürünler, sepet, favoriler ve AI stil danışmanı.">
+    <title>NORTHFORGE — Mağaza</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="kabin.css">
+    <link rel="stylesheet" href="magaza.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Ana sayfa">
+        <span class="brand-symbol">N</span>
+        <span>NORTHFORGE<small>MAĞAZA</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Ana menü">
+        <a href="magaza.html" class="on">Mağaza</a>
+        <a href="kabin.html">Sanal Kabin</a>
+        <a href="index.html">360° Ürün</a>
+        <a href="panel.html">Panel</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="fav-btn" type="button" aria-label="Favoriler">♡ <span id="fav-count">0</span></button>
+        <button class="cart-button" id="cart-btn" type="button" aria-label="Sepet">SEPET <span id="cart-count">0</span></button>
+      </div>
+    </header>
+
+    <main class="shop">
+      <section class="shop-hero">
+        <div class="section-number">YENİ SEZON / GİYİM</div>
+        <h1>STİLİNİ<br><span>KEŞFET.</span></h1>
+        <p>Ürünleri incele, favorine ekle, sanal kabinde dene. Ne giyeceğine karar veremiyorsan
+           sağ alttaki <b>AI Stil Danışmanı</b>'na sor.</p>
+      </section>
+
+      <div class="filters" id="filters">
+        <button class="chip active" data-cat="all" type="button">Tümü</button>
+        <button class="chip" data-cat="ust" type="button">Üst Giyim</button>
+        <button class="chip" data-cat="alt" type="button">Alt Giyim</button>
+      </div>
+
+      <div class="grid" id="grid"></div>
+    </main>
+
+    <!-- Ürün detay modalı -->
+    <div class="modal-backdrop" id="modal-backdrop" hidden></div>
+    <aside class="product-modal" id="product-modal" hidden aria-modal="true" role="dialog"></aside>
+
+    <!-- Sepet çekmecesi -->
+    <div class="cart-backdrop" id="cart-backdrop"></div>
+    <aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-label="Sepet">
+      <div class="cart-head"><p>SEPETİNİZ <span id="cart-head-count">0</span></p>
+        <button class="cart-close" id="cart-close" type="button" aria-label="Kapat">×</button></div>
+      <div class="cart-lines" id="cart-lines"></div>
+      <div class="cart-total" id="cart-summary"></div>
+    </aside>
+
+    <!-- AI Stil Danışmanı -->
+    <button class="stylist-fab" id="stylist-fab" type="button">✦ AI Stil Danışmanı</button>
+    <section class="stylist" id="stylist" hidden>
+      <div class="stylist-head">
+        <p>✦ AI STİL DANIŞMANI <small>Gemini</small></p>
+        <button id="stylist-close" type="button" aria-label="Kapat">×</button>
+      </div>
+      <div class="stylist-log" id="stylist-log"></div>
+      <form class="stylist-form" id="stylist-form">
+        <input id="stylist-input" type="text" placeholder="örn: Spor bir kombin istiyorum" autocomplete="off">
+        <button type="submit" aria-label="Gönder">↗</button>
+      </form>
+      <div class="stylist-suggest">
+        <button type="button" data-q="Spor bir kombin istiyorum">Spor kombin</button>
+        <button type="button" data-q="Ofise uygun şık bir kombin öner">Ofis kombini</button>
+        <button type="button" data-q="Yazlık günlük bir kombin istiyorum">Yazlık günlük</button>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-bottom">
+        <p>© 2026 NORTHFORGE — MAĞAZA KONSEPT DEMO</p>
+        <p>İSTANBUL / TR</p>
+      </div>
+    </footer>
+
+    <script src="magaza.js" type="module"></script>
+  </body>
+</html>
