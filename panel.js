@@ -13,10 +13,27 @@ document.querySelectorAll(".ptab").forEach((t) =>
 
 /* ------------------------------ Ürünler ----------------------------- */
 const tbody = $("#ptable tbody");
+
+/* Ürün fotoğrafı yükleme (gizli global input) */
+const photoUploader = document.createElement("input");
+photoUploader.type = "file"; photoUploader.accept = "image/*"; photoUploader.hidden = true;
+document.body.appendChild(photoUploader);
+let uploadTargetId = null;
+photoUploader.addEventListener("change", () => {
+  const file = photoUploader.files[0]; if (!file || !uploadTargetId) return;
+  const reader = new FileReader();
+  reader.onload = () => { store.upsertProduct({ id: uploadTargetId, image: reader.result }); };
+  reader.readAsDataURL(file);
+  photoUploader.value = "";
+});
+
 function renderTable() {
   tbody.innerHTML = store.all().map((p) => `
     <tr data-id="${p.id}">
-      <td class="pcell"><img src="${p.image}" alt=""><b>${p.name}</b></td>
+      <td class="pcell">
+        <button class="thumb-btn" data-photo="${p.id}" title="Fotoğraf yükle"><img src="${p.image}" alt=""><span>Foto</span></button>
+        <b>${p.name}</b>
+      </td>
       <td>
         <select data-f="category">
           <option value="ust" ${p.category === "ust" ? "selected" : ""}>Üst</option>
@@ -41,6 +58,9 @@ function renderTable() {
       }));
     tr.querySelector(".del").addEventListener("click", () => {
       if (confirm("Ürün silinsin mi?")) store.removeProduct(id);
+    });
+    tr.querySelector("[data-photo]").addEventListener("click", () => {
+      uploadTargetId = id; photoUploader.click();
     });
   });
 }
