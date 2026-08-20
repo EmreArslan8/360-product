@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Sanal Kabin demosu — kendi fotoğrafınla ürünü üzerinde dene.">
+    <title>AI SANAL KABİN — Üzerimde Dene</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="kabin.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="Ana sayfa">
+        <span class="brand-symbol">N</span>
+        <span>NORTHFORGE<small>AI STUDIO</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Ana menü">
+        <a href="index.html">360° Ürün</a>
+        <a href="kabin.html" class="on">Sanal Kabin</a>
+      </nav>
+      <div class="header-actions">
+        <span class="demo-tag">DEMO</span>
+      </div>
+    </header>
+
+    <main class="kabin">
+      <section class="kabin-intro">
+        <div class="section-number">AI SANAL KABİN / ÜZERİMDE DENE</div>
+        <h1>ÜRÜNÜ<br><span>ÜZERİNDE DENE.</span></h1>
+        <p>Kendi fotoğrafını yükle, bir ürün seç. Yerel giydirme anında çalışır;
+           “Gerçek AI ile dene” butonu ürünü fotoğrafına gerçekçi şekilde giydirir
+           (IDM-VTON, açık kaynak).</p>
+        <p id="status" class="status" aria-live="polite"></p>
+      </section>
+
+      <div class="kabin-grid">
+        <!-- SOL: sahne -->
+        <section class="stage-col">
+          <div id="stage" class="stage" aria-label="Deneme alanı">
+            <p id="empty-hint" class="empty-hint">
+              <b>Fotoğrafını yükle</b>
+              <span>veya örnek modelle dene</span>
+            </p>
+            <img id="human-img" alt="Yüklenen fotoğraf" style="display:none">
+            <div id="garment-layer" class="garment-layer" role="img" aria-label="Seçilen ürün" style="display:none"></div>
+            <div class="stage-loader" aria-hidden="true"><i></i><i></i><i></i></div>
+          </div>
+
+          <div class="stage-actions">
+            <label class="btn primary">
+              Fotoğraf yükle
+              <input id="photo-input" type="file" accept="image/*" hidden>
+            </label>
+            <button id="sample-photo" class="btn ghost" type="button">Örnek model</button>
+            <button id="download" class="btn ghost" type="button">İndir</button>
+          </div>
+
+          <div class="controls">
+            <label>Boyut<input id="ctrl-scale" type="range" min="0.4" max="2" step="0.01" value="1"></label>
+            <label>Döndür<input id="ctrl-rotate" type="range" min="-25" max="25" step="1" value="0"></label>
+            <label>Karışım<input id="ctrl-opacity" type="range" min="0.3" max="1" step="0.02" value="0.92"></label>
+          </div>
+        </section>
+
+        <!-- SAĞ: ürünler + AI -->
+        <aside class="picker-col">
+          <div class="picker-head">
+            <p>ÜRÜN SEÇ</p>
+            <small>Panelden yönetilen katalog</small>
+          </div>
+          <div id="product-grid" class="product-grid"></div>
+
+          <button id="try-ai" class="btn ai" type="button">
+            <span>Gerçek AI ile dene</span>
+            <em>IDM-VTON · açık kaynak</em>
+          </button>
+
+          <div id="ai-result" class="ai-result" hidden>
+            <p>GERÇEK AI SONUCU</p>
+            <img id="ai-result-img" alt="AI giydirme sonucu">
+          </div>
+
+          <div class="note">
+            <b>Nasıl çalışır?</b>
+            <p><b>Yerel giydirme:</b> ürünü sürükle, ölçekle, karıştır — internet/anahtar gerekmez, sunumda çökmez.</p>
+            <p><b>Gerçek AI:</b> ücretsiz IDM-VTON sunucusu (kuyruğa girebilir). Canlı üründe FASHN/Kling ticari API ile %100 kararlı.</p>
+            <p class="lic">Lisans: IDM-VTON araştırma/non-commercial. Demoda serbest; ticari teslimde lisanslı API'ye geçilir.</p>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-bottom">
+        <p>© 2026 NORTHFORGE — AI SANAL KABİN KONSEPT DEMO</p>
+        <p>İSTANBUL / TR</p>
+      </div>
+    </footer>
+
+    <script src="kabin.js" type="module"></script>
+  </body>
+</html>
